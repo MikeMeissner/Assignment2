@@ -39,7 +39,7 @@ router.get('/add', requireAuth, function (req, res, next) {
     });
 });
 
-/* process the submission of a new user */
+/* process the submission of a new contact */
 router.post('/add', requireAuth, function (req, res, next) {
    // var contact = new Contact(req.body);
     Contact.create({
@@ -62,7 +62,7 @@ router.post('/add', requireAuth, function (req, res, next) {
 router.get('/:id', requireAuth, function (req, res, next) {
     // create an id variable
     var id = req.params.id;
-    // use mongoose and our model to find the right user
+    // use mongoose and our model to find the right contact
     Contact.findById(id, function (err, contact) {
         if (err) {
             console.log(err);
@@ -97,7 +97,7 @@ router.post('/:id', requireAuth, function (req, res, next) {
     });
 });
 
-/* run delete on the selected user */
+/* run delete on the selected contact */
 router.get('/delete/:id', requireAuth, function (req, res, next) {
     var id = req.params.id;
     Contact.remove({ _id: id }, function (err) {
